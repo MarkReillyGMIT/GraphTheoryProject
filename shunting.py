@@ -12,7 +12,7 @@ opers = []
 #Convert the input to a stack list.
 infix = list(infix)[::-1]
 
-#Output list.
+#Output lists.
 postfix = []
 
 #Operator precedence
