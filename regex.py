@@ -69,7 +69,7 @@ def shunt(infix):
     return ''.join(postfix)
 
 
-def regex_compile(infix):
+def compile(infix):
     postfix = shunt(infix)
     postfix = list(postfix)[::-1]
 
@@ -131,8 +131,30 @@ def match(regex, s):
     # regex (fully) matches the string s,it returns False otherwise
 
     #Compile the regular expression into an NFA.
-    nfa = regex_compile(regex)
+    nfa = compile(regex)
+
+    #Try to match the regular expression to the string s.
+    #The current set of states
+    current = set(nfa.start)
+    #The previous set of states
+    previous = set()
+    
+    #Loop through characters in set
+    for c in s:
+        #Keep track of where we were
+        previous = current
+        #Create a new empty set for states we're about to be in.
+        current = set()
+        #Loop through the previous states
+        for s in previous:
+            #Only follow arrows not labeled by e(epsilon)
+            if s.label is not None:
+                #if the label of the state is = to the character we've read
+                if s.label == c:
+                # Add the state at the end of the arrow to current.
+                    current.update(s.edges)
+
     #Ask the NFA if it mathces the String s.
-    return  nfa 
+    return True
 
 print(match("a.b|b*","bbbbbbbbb"))
