@@ -121,10 +121,24 @@ def compile(infix):
             start = State(label=c, edges=[accept])
             #Create new instance of fragment to represent the new NFA
             newfrag = Fragment(start, accept)
-            #Push the new NFA to the NFA stack
-            nfa_stack.append(newfrag)
+        
+        #Push the new NFA to the NFA stack
+        nfa_stack.append(newfrag)
            
     return nfa_stack.pop()
+#Add a state to a set and follow all of the e arrows
+def followes(state, current):
+    if state not in current:
+    #Put the state into current
+        current.add(state)
+    #See whether state is labeled by e
+        if state.label is None:
+            #Loop through the states pointed by this state
+            for x in state.edges:
+                #Follow all of their e(psilons)too.
+                followes(x,current)
+
+
 
 def match(regex, s):
     #This function will return true if and only if the regular expression 
@@ -135,7 +149,8 @@ def match(regex, s):
 
     #Try to match the regular expression to the string s.
     #The current set of states
-    current = set(nfa.start)
+    current = set()
+    followes(nfa.start, current)
     #The previous set of states
     previous = set()
     
@@ -146,15 +161,14 @@ def match(regex, s):
         #Create a new empty set for states we're about to be in.
         current = set()
         #Loop through the previous states
-        for s in previous:
+        for state in previous:
             #Only follow arrows not labeled by e(epsilon)
-            if s.label is not None:
+            if state.label is not None:
                 #if the label of the state is = to the character we've read
-                if s.label == c:
+                if state.label == c:
                 # Add the state at the end of the arrow to current.
-                    current.update(s.edges)
-
+                   followes(state.edges[0], current)
     #Ask the NFA if it mathces the String s.
-    return True
+    return nfa.accept in current
 
-print(match("a.b|b*","bbbbbbbbb"))
+print(match("a.b|b*","bbbbbbbb"))
