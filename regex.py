@@ -81,11 +81,10 @@ def compile(infix):
             frag2 = nfa_stack.pop()
             #point frag2's accept state at frag1's start state
             frag2.accept.edges.append(frag1.start)
-            #Create new instance of fragment to represent the new NFA
-            newfrag = Fragment(frag2.start, frag1.accept)
-            #Push the new NFA to the NFA stack
-            nfa_stack.append(newfrag)
-
+            #The new start state is frag2's.
+            start = frag2.start
+            #The new accept state is frag1's.
+            accept = frag1.accept
         elif c == '|':
             #Pop two fragments of the stack
             frag1 = nfa_stack.pop()
@@ -96,10 +95,6 @@ def compile(infix):
             #Point the old accept states at the new one 
             frag2.accept.edges.append(accept)
             frag1.accept.edges.append(accept)
-            #Create new instance of fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
-            #Push the new NFA to the NFA stack
-            nfa_stack.append(newfrag)
         elif c == '*':
             #Pop a single fragment of the stack
             frag = nfa_stack.pop()
@@ -108,16 +103,13 @@ def compile(infix):
             start = State(edges = [frag.start, accept])
             #Point the arrows 
             frag.accept.edges=[frag.start, accept]
-            #Create new instance of fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
-            #Push the new NFA to the NFA stack
-            nfa_stack.append(newfrag)
         else:
             #Create new start and accept states
             accept = State()
             start = State(label=c, edges=[accept])
-            #Create new instance of fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
+
+        #Create new instance of fragment to represent the new NFA
+        newfrag = Fragment(start, accept)
         
         #Push the new NFA to the NFA stack
         nfa_stack.append(newfrag)
@@ -168,4 +160,15 @@ def match(regex, s):
     #Ask the NFA if it mathces the String s.
     return nfa.accept in current
 
-print(match("a.b|b*","bbbbbbbb"))
+if __name__ == "__main__":
+    tests =[
+        ["a.b|b*", "bbbbbbb", True],
+        ["a.b|b*", "bbbbx", False],
+        ["a.b", "ab", True],
+        ["b**", "b", True]
+    ]
+
+    for test in tests:
+     assert match(test[0], test[1]) == test[2], test[0] + \
+     (" should match " if test[2] else " should not match ") + test[1]
+
