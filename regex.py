@@ -4,8 +4,8 @@
 class State:
     """ A state with one or two arrows, all edges labeled by label. """
         # Every state has 0, 1, or 2 edges from it.
-    def __init__(self, label=None, edges=[]):
-        self.edges = edges
+    def __init__(self, label=None, edges=None):
+        self.edges = edges if edges else []
         #Label for the arrows, None means epsilon.
         self.label = label
 
@@ -161,7 +161,7 @@ def match(regex, s):
     return nfa.accept in current
 
 if __name__ == "__main__":
-    tests =[
+    tests = [
         ["a.b|b*", "bbbbbbb", True],
         ["a.b|b*", "bbbbx", False],
         ["a.b", "ab", True],

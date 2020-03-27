@@ -1,105 +1,7 @@
 # Author: Mark Reilly
 # Graph Theory Project Thompsons Construction
 
-""" Shunting Yard Algorithm converts infix regular expression to postfix """
-
-def shunt(infix):
-    """Return the infix regular expression in postfix """
-    #Convert the input to a stack list.
-    infix = list(infix)[::-1]
-
-    #Operators Stack
-    opers = []
- 
-    #Output lists.
-    postfix = []
-
-    #Operator precedence
-    prec = {'*': 100, '|': 80, '.': 60, ')': 40, '(': 20}
-    #Loop through one character at a time.
-    while infix:
-        #pop a character from the list
-        c = infix.pop()
-    #Decide what to do based on the character.
-        if c == '(':
-            #Push and open brcket to opers stack
-            opers.append(c)
-        elif c == ')':
-            #Pop the operators stack until u find an opening bracket
-            while opers[-1] != '(':
-                postfix.append(opers.pop())
-            #Get rid of the "("
-            opers.pop()
-        elif c in prec:
-            #Push any operators on the opers stack with higher prec to the output.
-            while opers and prec[c] < prec[opers[-1]]:
-                postfix.append(opers.pop())
-            #Push c to the opers stack.
-            opers.append(c)
-        else:
-            #Typically we just push the character to the output
-            postfix.append(c)
-
-    #Pop all cahracters to the output
-    while opers:
-        postfix.append(opers.pop())
-
-    #Convert output list to string.
-    return ''.join(postfix)
-
-def compile(infix):
-    """Return NFA fragment representing the infix regular expression. """
-    #Convert infix to postfix.
-    postfix = shunt(infix)
-    ##Make postfix a stack of characters
-    postfix = list(postfix)[::-1]
-    
-    #A stack for NFA fragments
-    nfa_stack = []
-
-    while postfix:
-        # Pop a character from postfix
-        c = postfix.pop()
-        if c == '.':
-            #Pop two fragments of the stack
-            frag1 = nfa_stack.pop()
-            frag2 = nfa_stack.pop()
-            #point frag2's accept state at frag1's start state
-            frag2.accept.edges.append(frag1.start)
-            #The new start state is frag2's.
-            start = frag2.start
-            #The new accept state is frag1's.
-            accept = frag1.accept
-        elif c == '|':
-            #Pop two fragments of the stack
-            frag1 = nfa_stack.pop()
-            frag2 = nfa_stack.pop()
-            #Create new start and accept states
-            accept = State()
-            start = State(edges=[frag2.start, frag1.start])
-            #Point the old accept states at the new one 
-            frag2.accept.edges.append(accept)
-            frag1.accept.edges.append(accept)
-        elif c == '*':
-            #Pop a single fragment of the stack
-            frag = nfa_stack.pop()
-            #Create new start and accept states
-            accept = State()
-            start = State(edges = [frag.start, accept])
-            #Point the arrows 
-            frag.accept.edges=[frag.start, accept]
-        else:
-            #Create new start and accept states
-            accept = State()
-            start = State(label=c, edges=[accept])
-
-        #Create new instance of fragment to represent the new NFA
-        newfrag = Fragment(start, accept)
-        
-        #Push the new NFA to the NFA stack
-        nfa_stack.append(newfrag)
-           
-    return nfa_stack.pop()
+from Compile import compile
 
 #Add a state to a set and follow all of the e arrows
 def followes(state, current):
@@ -142,4 +44,5 @@ def match(regex, s):
                    followes(state.edges[0], current)
     #Ask the NFA if it mathces the String s.
     return nfa.accept in current
+
 
