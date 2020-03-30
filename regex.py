@@ -103,6 +103,14 @@ def compile(infix):
             start = State(edges = [frag.start, accept])
             #Point the arrows 
             frag.accept.edges=[frag.start, accept]
+        elif c == '?':
+			# Pop a single fragment off the stack
+			frag = nfa_stack.pop()
+			# Create new start and accept states
+			accept = State()
+			start = State(edges=[frag.start, accept])
+			# Point the old accept states at the new one
+			frag.accept.edges.append(accept)
         else:
             #Create new start and accept states
             accept = State()
