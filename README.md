@@ -14,4 +14,6 @@ Returns true if the regular expression matches the input string.
 
 ## Running the tests
 
-[alt text](https://github.com/MarkReillyGMIT/GraphTheoryProject/Image/GraphTheory.png)
+[alt text](https://github.com/MarkReillyGMIT/GraphTheoryProject/tree/master/Image/GraphTheory.png)
+
+[alt text](https://github.com/MarkReillyGMIT/GraphTheoryProject/tree/master/Image/GraphTheoryFalse.png)
