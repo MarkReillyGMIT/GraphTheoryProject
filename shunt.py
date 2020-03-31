@@ -1,8 +1,10 @@
 # Author: Mark Reilly
 # Graph Theory Project Thompsons Construction
-
+# Reference Dr.Ian McLoughlin https://web.microsoftstream.com/video/781325b2-b4b9-461e-88cc-c5bf37e977eb
 def shunt(infix):
-    """Return the infix regular expression in postfix."""
+    """
+    Return the infix regular expression in postfix.
+    """
     #Convert the input to a stack list.
     infix = list(infix)[::-1]
     

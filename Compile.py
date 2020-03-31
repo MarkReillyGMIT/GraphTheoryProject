@@ -1,11 +1,14 @@
 # Author: Mark Reilly
 # Graph Theory Project Thompsons Construction
+# Reference Dr.Ian McLoughlin https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54
 
 from State_Fragment import State, Fragment
 from shunt import shunt
 
 def compile(infix):
-	"""Return an NFA fragment representing the infix regular expression"""
+	"""
+	Return an NFA fragment representing the infix regular expression
+	"""
 	# Convert infix to postfix.
 	postfix = shunt(infix)
 	# Make postfix a stack of characters.
@@ -17,7 +20,7 @@ def compile(infix):
 	while postfix:
 		# Pop a character from postfix
 		c = postfix.pop()
-		if c == '.':
+		if c == '.':# Append
 			# Pop two fragments(NFA'S) off the stack.
 			frag1 = nfa_stack.pop()
 			frag2 = nfa_stack.pop()
@@ -27,7 +30,7 @@ def compile(infix):
 			start = frag2.start
             #The new accept state is frag1's.
 			accept = frag1.accept
-		elif c == '|':
+		elif c == '|':# OR
 			# Pop two frags off stack
 			frag1 = nfa_stack.pop()
 			frag2 = nfa_stack.pop()
@@ -45,7 +48,7 @@ def compile(infix):
 			start = State(edges=[frag.start, accept])
 			# Point the arrows.
 			frag.accept.edges = (frag.start, accept)
-		elif c == '?':
+		elif c == '?':#Zero or one of
 			# Pop a single fragment off the stack
 			frag = nfa_stack.pop()
 			# Create new start and accept states
@@ -53,7 +56,7 @@ def compile(infix):
 			start = State(edges=[frag.start, accept])
 			# Point the old accept states at the new one
 			frag.accept.edges.append(accept)
-		elif c == '+':
+		elif c == '+':# Atleast one of
 			# Pop a single fragment off the stack
 			frag = nfa_stack.pop()
 			# Create new start and accept states

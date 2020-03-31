@@ -1,5 +1,6 @@
 # Author: Mark Reilly
 # Graph Theory Project Thompsons Construction
+#Reference Dr.Ian McLoughlin https://web.microsoftstream.com/video/3be78704-8cc5-43f1-9be5-68b2e92c8d56
 
 """A Nonedeterministic finite automaton (NFA) is represented as a fragement with a start state and an accept state """
 

@@ -1,6 +1,6 @@
 # Author: Mark Reilly
 # Graph Theory Project Thompsons Construction
-
+# Reference Dr.Ian McLoughlin https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54
 from Compile import compile
 
 #Add a state to a set and follow all of the e arrows
