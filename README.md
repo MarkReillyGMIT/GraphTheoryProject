@@ -13,5 +13,6 @@
 Returns true if the regular expression matches the input string.
 
 ## Running the tests
+![alt text](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Image/GraphTheory.PNG "True")
 
-Explain how to run the automated tests for this system
+![alt text](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Image/GraphTheoryFalse.PNG "False")
