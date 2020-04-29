@@ -9,7 +9,7 @@
 
 `cd Project`
 
-`python main.py`
+`python main.py --Run`
 
 The program will promt the user to input a regular expression, e.g "a.b|b*"
 
@@ -46,3 +46,6 @@ https://swtch.com/~rsc/regexp/regexp1.html
 
 The folowing helped me with user input:
 https://www.geeksforgeeks.org/taking-input-in-python/
+
+The following helped with adding command line arguements:
+https://www.geeksforgeeks.org/command-line-arguments-in-python/
