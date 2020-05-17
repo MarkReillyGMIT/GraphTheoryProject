@@ -2,4 +2,24 @@
 
 # Graph Theory Report
 
-Welcome everyone to my Graph Theory Project's overview, inside this document I will have a brief introduction on my project and how the code works, then I will discuss how to download and run my code from GitHub in detail and also how download and setup python on your machine.After this I will discuss how testing is incorporated into my code, and the relevance and importance of testing in any software project.Finally I will give an overview and explanation of the main algorithms in my code.
+Welcome everyone to my Graph Theory Project's overview, inside this document I will have a brief introduction on my project and how the code works, then I will discuss how to download and run my code from GitHub in detail and also how download and setup python on your machine. After this I will discuss how testing is incorporated into my code, and the relevance and importance of testing in any software project. Finally I will give an overview and explanation of the main algorithms in my code.
+
+To start of I'd like to say the project is written in python, which the majority of you as second year students would have heard about but from experience would not have coded with as of yet.
+
+The project required us to build a non-deterministic finite automaton (NFA) from a regular expression,and can use the NFA to check if the regular expression matches any given string of text.
+
+My repository contains the following:
+
+* [Lab](https://github.com/MarkReillyGMIT/GraphTheoryProject/tree/master/Lab "Lab Folder") folder keeps previous labs from each week of the module.
+* [Project](https://github.com/MarkReillyGMIT/GraphTheoryProject/tree/master/Project "Project Folder") folder, this is where all the necessary files for my project are kept.
+* [Image](https://github.com/MarkReillyGMIT/GraphTheoryProject/tree/master/Image "Image Folder") folder, keeps all images for README and Overview markdown documents.
+
+The project folder contains the following:
+* [Compile.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/Compile.py "Compile.py") this returns an NFA fragment representing the infix regular expression.
+* [MainMenu.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/MainMenu.py "MainMenu.py") shows the main menu when the program is run.
+* [Result.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/Result.py "Result.py") prompts the user to enter the Regular Expression and String.
+* [State_Fragment.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/State_Fragment.py "State_Fragment.py") creates a fragment with a start and accept state.
+* [main.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/main.py "Main.py") is where I call Result.py and MainMenu.py, which prompts user for input of Regex and String, returns if the Regex matches the string or not.
+* [shunt.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/shunt.py "Shunt.py") is short for the shunting yard algorithm which is a method for parsing mathematical expressions specified in infix notation to postfix.
+* [testing.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/testing.py "testing.py") is used for testing the program.
+* [thompsonConstruction.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/thompsonConstruction.py "thompsonConstruction.py") is a method of transforming a regular expression into a NFA.[2] This NFA can be used to match strings against the regular expression.
