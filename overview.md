@@ -2,6 +2,7 @@
 
 # Graph Theory Report
 
+# Introduction
 Welcome everyone to my Graph Theory Project's overview, inside this document I will have a brief introduction on my project and how the code works, then I will discuss how to download and run my code from GitHub in detail and also how download and setup python on your machine. After this I will discuss how testing is incorporated into my code, and the relevance and importance of testing in any software project. Finally I will give an overview and explanation of the main algorithms in my code.
 
 To start of I'd like to say the project is written in python, which the majority of you as second year students would have heard about but from experience would not have coded with as of yet.
@@ -23,3 +24,23 @@ The project folder contains the following:
 * [shunt.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/shunt.py "Shunt.py") is short for the shunting yard algorithm which is a method for parsing mathematical expressions specified in infix notation to postfix.
 * [testing.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/testing.py "testing.py") is used for testing the program.
 * [thompsonConstruction.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/thompsonConstruction.py "thompsonConstruction.py") is a method of transforming a regular expression into a NFA.[2] This NFA can be used to match strings against the regular expression.
+
+# Run 
+Firstly, I am going to discuss how to download and run my code from my GitHub repository.
+
+* Start by opening a command prompt and enter the following `git clone https://github.com/MarkReillyGMIT/GraphTheoryProject`
+* `cd GraphTheoryProject`
+* `cd Project`
+* `python main.py --Run`
+* The program will prompt the user to input a regular expression, e.g "a.b|b*"
+* Next, the program will prompt the user to enter a string, e.g "bbb"
+* The program will return if the string matches or does not match the regular expression.
+
+Secondly, I am going to discuss how to download python to your machine.
+
+* Firstly go to the following link to download [Python](https://www.python.org/downloads/ "Python")
+* Select which OS you want download it for, for this example I am going to use windows.
+* Choose which python version and then select Windows x86-64 executable installer.
+* Run the download file, when you reach a page with "Install Python 'version'" at the bottom of the page select "Add Python to path" and then select "Install Now".
+* Click Next and then Install.
+* Finally check if it is installed correctly by opening a command prompt and typing `python`, if the next writable line begins with ">>>" type `print('Hello World')` and enter. If "Hello World" is printed out, congratulations python is installed on your machine.
