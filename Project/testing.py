@@ -8,7 +8,7 @@ if __name__ == "__main__":
     tests = [
         ["a.b|b*", "bbbbb", True],
         ["a.b|b*", "bbx", False],
-        ["a.b", "abbbb", False],
+        ["a.b*", "abbbb", True],
         ["b**", "b", True],
         ["b*", "", True],
         ["b+", "bbbb", True],
