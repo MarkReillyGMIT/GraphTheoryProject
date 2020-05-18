@@ -44,3 +44,34 @@ Secondly, I am going to discuss how to download python to your machine.
 * Run the download file, when you reach a page with "Install Python 'version'" at the bottom of the page select "Add Python to path" and then select "Install Now".
 * Click Next and then Install.
 * Finally check if it is installed correctly by opening a command prompt and typing `python`, if the next writable line begins with ">>>" type `print('Hello World')` and enter. If "Hello World" is printed out, congratulations python is installed on your machine.
+
+# Testing
+In this section I am going to discuss how to run the tests incorporated in the code. My project testing is done in the [testing.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/testing.py "testing.py") file, I am testing to see if the postfix regular expression matches using the match function created in [thompsonConstruction.py](https://github.com/MarkReillyGMIT/GraphTheoryProject/blob/master/Project/thompsonConstruction.py "thompsonConstruction.py"). The match function allows us to test any input and return an answer of true or false.
+
+The following will show you how to run testing for my project:
+* Once in the Project directory within the GraphTheoryProject folder e.g `GraphTheoryProject/Project`.
+* Enter `python testing.py`, this will run the testing.py file.
+* Nothing will return if all the test's are correct.
+* If a test is incorrect the following will return: "regular expression should not match string" or "regular expression should match string".
+
+If a test is incorrect the following will return: "regular expression should not match string" or "regular expression should match string".
+
+# Algorithm
+The main algorithm in my project would be the
+Shunting yard Algorithm which convert's an infix expression into a postfix expression.It uses a stack which is used to hold the operators.The purpose of the stack is to reverse the order of the operators in the expression.
+
+The operator precedence needs to be set so the method knows which operator has higher precedence over the other operators.If the operator on the top of the stack has higher precedence than the one being read, pop and print the one on top and then push the new operator on.
+
+Once the end of the expression has been reached, pop the operators on the stack one at a time and convert the output list to a string.
+
+# References
+
+Shunt Yard Algorithm Explanation - http://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/
+
+The following helped me to understand regular expressions to NFA's: https://www.youtube.com/watch?v=RYNN-tb9WxI
+
+The following helped me to understand '+' One or more and '?' Zero or one and how to implement them: https://swtch.com/~rsc/regexp/regexp1.html
+
+The folowing helped me with user input: https://www.geeksforgeeks.org/taking-input-in-python/
+
+The following helped with adding command line arguements: https://www.geeksforgeeks.org/command-line-arguments-in-python/
