@@ -19,4 +19,4 @@ if __name__ == "__main__":
 
     for test in tests:
         assert thompsonConstruction.match(test[0], test[1]) == test[2], test[0] + \
-        (" should match " if test[2] else " should not match ") + test[1]
+        (" should not match " if test[2] else " should match ") + test[1]
